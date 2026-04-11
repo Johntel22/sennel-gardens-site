@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sennel Gardens — Commercial Cover Page</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        @page {
+            size: 11in 8.5in;
+            margin: 0;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #0a0a0a;
+            color: #fff;
+            min-height: 100vh;
+            overflow: hidden;
+        }
+
+        .cover {
+            width: 100vw;
+            height: 100vh;
+            position: relative;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            overflow: hidden;
+        }
+
+        /* Left panel — cinematic hero */
+        .hero-panel {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-panel::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(30,60,20,0.85) 0%, rgba(10,10,10,0.6) 50%, transparent 100%);
+            z-index: 2;
+        }
+
+        .hero-panel::after {
+            content: '';
+            position: absolute;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            width: 120px;
+            background: linear-gradient(to right, transparent, #0a0a0a);
+            z-index: 3;
+        }
+
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            z-index: 1;
+        }
+
+        .hero-bg img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: saturate(1.2) contrast(1.1);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 4;
+            padding: 60px 50px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            height: 100%;
+        }
+
+        .production-tag {
+            font-size: 11px;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.5);
+            margin-bottom: 12px;
+            font-weight: 500;
+        }
+
+        .title-block h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 62px;
+            font-weight: 900;
+            line-height: 1.05;
+            letter-spacing: -1px;
+            margin-bottom: 8px;
+        }
+
+        .title-block h1 span {
+            color: #7cb342;
+        }
+
+        .tagline {
+            font-family: 'Playfair Display', serif;
+            font-size: 22px;
+            font-weight: 400;
+            font-style: italic;
+            color: rgba(255,255,255,0.7);
+            margin-bottom: 30px;
+        }
+
+        .divider {
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(to right, #7cb342, #4caf50);
+            margin-bottom: 20px;
+            border-radius: 2px;
+        }
+
+        .logline {
+            font-size: 15px;
+            line-height: 1.7;
+            color: rgba(255,255,255,0.75);
+            max-width: 420px;
+            font-weight: 300;
+        }
+
+        /* Right panel — info */
+        .info-panel {
+            background: #0a0a0a;
+            padding: 50px 50px 50px 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .top-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        .ntf-logo {
+            text-align: right;
+        }
+
+        .ntf-logo .name {
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: #fff;
+        }
+
+        .ntf-logo .sub {
+            font-size: 10px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.4);
+            margin-top: 2px;
+        }
+
+        .format-badge {
+            display: inline-block;
+            border: 1px solid rgba(124,179,66,0.4);
+            color: #7cb342;
+            font-size: 10px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            padding: 6px 14px;
+            border-radius: 2px;
+        }
+
+        /* Transformation strip */
+        .transform-strip {
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            gap: 16px;
+            align-items: center;
+            margin: 0;
+        }
+
+        .transform-img {
+            width: 100%;
+            height: 140px;
+            border-radius: 6px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .transform-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .transform-img .label {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 6px 12px;
+            background: linear-gradient(transparent, rgba(0,0,0,0.8));
+            font-size: 10px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.7);
+        }
+
+        .arrow {
+            font-size: 28px;
+            color: #7cb342;
+            font-weight: 300;
+        }
+
+        /* Three pillars */
+        .pillars {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 20px;
+        }
+
+        .pillar {
+            text-align: center;
+            padding: 20px 10px;
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 8px;
+            background: rgba(255,255,255,0.02);
+        }
+
+        .pillar-icon {
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: center;
+            color: #7cb342;
+        }
+
+        .pillar h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 14px;
+            font-weight: 700;
+            margin-bottom: 6px;
+            color: #7cb342;
+        }
+
+        .pillar p {
+            font-size: 11px;
+            line-height: 1.5;
+            color: rgba(255,255,255,0.5);
+            font-weight: 300;
+        }
+
+        /* Credits / Bottom */
+        .credits {
+            border-top: 1px solid rgba(255,255,255,0.08);
+            padding-top: 24px;
+        }
+
+        .credits-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-bottom: 20px;
+        }
+
+        .credit-item .label {
+            font-size: 9px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.35);
+            margin-bottom: 3px;
+        }
+
+        .credit-item .value {
+            font-size: 13px;
+            font-weight: 500;
+            color: rgba(255,255,255,0.85);
+        }
+
+        .footer-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 16px;
+            border-top: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .footer-bar .org {
+            font-size: 10px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.3);
+        }
+
+        .footer-bar .tax {
+            font-size: 10px;
+            color: rgba(255,255,255,0.25);
+        }
+
+        /* Print styles */
+        @media print {
+            body { background: #0a0a0a; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+            .cover { width: 11in; height: 8.5in; }
+        }
+    </style>
+</head>
+<body>
+    <div class="cover">
+        <!-- LEFT: Cinematic Hero -->
+        <div class="hero-panel">
+            <div class="hero-bg">
+                <img src="images/slide13_img5.jpg" alt="Sennel Gardens — rows of cultivated land">
+            </div>
+            <div class="hero-content">
+                <p class="production-tag">A New Take Films Production</p>
+                <div class="title-block">
+                    <h1><span>Sennel</span><br>Gardens</h1>
+                </div>
+                <p class="tagline">"Grow what you can, where you can."</p>
+                <div class="divider"></div>
+                <p class="logline">
+                    In the heart of DC's Ward 7, vacant lots littered with blight are being
+                    transformed into thriving urban farms — feeding families, creating jobs,
+                    and proving that nutritious food can grow in any space. This is the story
+                    of Emmanuel "Manny" McDaniel and the community turning concrete into harvest.
+                </p>
+            </div>
+        </div>
+
+        <!-- RIGHT: Info Panel -->
+        <div class="info-panel">
+            <div class="top-bar">
+                <div class="format-badge">Short-Form Commercial</div>
+                <div class="ntf-logo">
+                    <div class="name">New Take Films</div>
+                    <div class="sub">USA</div>
+                </div>
+            </div>
+
+            <!-- Before / After strip -->
+            <div class="transform-strip">
+                <div class="transform-img">
+                    <img src="images/slide9_img4.jpg" alt="Before — vacant lot">
+                    <div class="label">Before</div>
+                </div>
+                <div class="arrow">&rarr;</div>
+                <div class="transform-img">
+                    <img src="images/slide21_img12.jpg" alt="After — thriving garden">
+                    <div class="label">After</div>
+                </div>
+            </div>
+
+            <!-- Three Pillars -->
+            <div class="pillars">
+                <div class="pillar">
+                    <span class="pillar-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22V12"/><path d="M12 12C12 12 8 8 8 5a4 4 0 0 1 8 0c0 3-4 7-4 7z"/><path d="M12 12c-2-2-5-3-7-2"/><path d="M12 12c2-2 5-3 7-2"/></svg></span>
+                    <h3>Enrichment</h3>
+                    <p>Self-growth through cultivation. 1,000 acres or 1 square foot.</p>
+                </div>
+                <div class="pillar">
+                    <span class="pillar-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2a7 7 0 0 0-7 7c0 5 7 11 7 11s7-6 7-11a7 7 0 0 0-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></span>
+                    <h3>Nutrition</h3>
+                    <p>Reducing food deserts. Fresh produce within walking distance.</p>
+                </div>
+                <div class="pillar">
+                    <span class="pillar-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 20V10"/><path d="M18 20V4"/><path d="M6 20v-4"/></svg></span>
+                    <h3>Economic Growth</h3>
+                    <p>Local employment. Revenue from vacant land. Skills training.</p>
+                </div>
+            </div>
+
+            <!-- Credits -->
+            <div class="credits">
+                <div class="credits-grid">
+                    <div class="credit-item">
+                        <div class="label">Founder & Subject</div>
+                        <div class="value">Emmanuel E. McDaniel</div>
+                    </div>
+                    <div class="credit-item">
+                        <div class="label">Locations</div>
+                        <div class="value">520 45th St NE &bull; 4419 Foote St NE</div>
+                    </div>
+                    <div class="credit-item">
+                        <div class="label">Organization</div>
+                        <div class="value">Sennel Gardens 501(c)(3)</div>
+                    </div>
+                    <div class="credit-item">
+                        <div class="label">Contact</div>
+                        <div class="value">sennelgardens@gmail.com &bull; 202-854-9244</div>
+                    </div>
+                </div>
+                <div class="footer-bar">
+                    <span class="org">Washington, DC &bull; Est. 2023</span>
+                    <span class="tax">EIN: 38-4330572</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

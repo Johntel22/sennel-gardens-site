@@ -1,0 +1,1498 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sennel Gardens — Grow What You Can, Where You Can</title>
+    <meta name="description" content="Sennel Gardens transforms vacant lots in Washington, DC into thriving urban farms. 501(c)(3) nonprofit — enrichment, nutrition, economic growth.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --green-dark: #1b3a1a;
+            --green-mid: #2d6a2e;
+            --green-accent: #7cb342;
+            --green-light: #c5e1a5;
+            --earth-brown: #5d4037;
+            --cream: #faf8f5;
+            --charcoal: #1a1a1a;
+            --text: #2c2c2c;
+            --text-light: #666;
+            --radius: 12px;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            color: var(--text);
+            background: var(--cream);
+            overflow-x: hidden;
+        }
+
+        img { display: block; }
+
+        /* ===== NAV ===== */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 100;
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.4s ease;
+        }
+
+        nav.scrolled {
+            background: rgba(27,58,26,0.95);
+            backdrop-filter: blur(12px);
+            padding: 14px 40px;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.2);
+        }
+
+        .nav-brand {
+            font-family: 'Playfair Display', serif;
+            font-size: 22px;
+            font-weight: 900;
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .nav-brand span { color: var(--green-accent); }
+
+        .nav-links {
+            display: flex;
+            gap: 28px;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 500;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover { color: var(--green-accent); }
+
+        .nav-cta {
+            background: var(--green-accent) !important;
+            color: var(--green-dark) !important;
+            padding: 8px 20px !important;
+            border-radius: 4px;
+            font-weight: 600 !important;
+        }
+
+        .mobile-toggle {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 8px;
+            z-index: 102;
+        }
+
+        .mobile-toggle span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: #fff;
+            margin: 6px 0;
+            transition: 0.3s;
+        }
+
+        /* ===== HERO ===== */
+        .hero {
+            height: 100vh;
+            min-height: 650px;
+            position: relative;
+            display: flex;
+            align-items: flex-end;
+            overflow: hidden;
+        }
+
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+        }
+
+        .hero-bg img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: saturate(1.15);
+        }
+
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(
+                to bottom,
+                rgba(27,58,26,0.35) 0%,
+                rgba(27,58,26,0.15) 40%,
+                rgba(27,58,26,0.65) 70%,
+                rgba(27,58,26,0.95) 100%
+            );
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 3;
+            padding: 0 80px 80px;
+            max-width: 800px;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            font-size: 11px;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--green-accent);
+            border: 1px solid rgba(124,179,66,0.4);
+            padding: 6px 16px;
+            border-radius: 2px;
+            margin-bottom: 24px;
+            font-weight: 500;
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(48px, 7vw, 80px);
+            font-weight: 900;
+            color: #fff;
+            line-height: 1.05;
+            margin-bottom: 16px;
+            letter-spacing: -2px;
+        }
+
+        .hero h1 em { color: var(--green-accent); font-style: normal; }
+
+        .hero-tagline {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(18px, 2.5vw, 26px);
+            font-style: italic;
+            color: rgba(255,255,255,0.7);
+            margin-bottom: 28px;
+        }
+
+        .hero-desc {
+            font-size: 16px;
+            line-height: 1.8;
+            color: rgba(255,255,255,0.6);
+            max-width: 520px;
+            font-weight: 300;
+            margin-bottom: 36px;
+        }
+
+        .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 30px;
+            font-size: 14px;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+            font-family: inherit;
+        }
+
+        .btn-primary {
+            background: var(--green-accent);
+            color: var(--green-dark);
+        }
+
+        .btn-primary:hover {
+            background: #8bc34a;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(124,179,66,0.3);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: #fff;
+            border: 1px solid rgba(255,255,255,0.3);
+        }
+
+        .btn-outline:hover {
+            border-color: #fff;
+            background: rgba(255,255,255,0.08);
+        }
+
+        .btn-dark {
+            background: var(--green-dark);
+            color: #fff;
+        }
+
+        .btn-dark:hover {
+            background: #234d22;
+            transform: translateY(-2px);
+        }
+
+        /* Scroll indicator */
+        .scroll-hint {
+            position: absolute;
+            bottom: 28px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 3;
+            animation: float 2s ease-in-out infinite;
+        }
+
+        .scroll-hint span {
+            display: block;
+            width: 24px;
+            height: 38px;
+            border: 2px solid rgba(255,255,255,0.25);
+            border-radius: 12px;
+            position: relative;
+        }
+
+        .scroll-hint span::after {
+            content: '';
+            width: 4px;
+            height: 8px;
+            background: var(--green-accent);
+            border-radius: 2px;
+            position: absolute;
+            top: 6px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: scrolldot 2s infinite;
+        }
+
+        @keyframes float { 0%,100%{ transform: translateX(-50%) translateY(0); } 50%{ transform: translateX(-50%) translateY(8px); } }
+        @keyframes scrolldot { 0%{ opacity:1; top:6px; } 100%{ opacity:0; top:20px; } }
+
+        /* ===== SECTION HELPERS ===== */
+        section { padding: 100px 80px; }
+
+        .section-label {
+            font-size: 11px;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--green-accent);
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(30px, 4vw, 48px);
+            font-weight: 900;
+            line-height: 1.15;
+            margin-bottom: 18px;
+            letter-spacing: -1px;
+        }
+
+        .section-desc {
+            font-size: 17px;
+            line-height: 1.8;
+            color: var(--text-light);
+            max-width: 600px;
+            font-weight: 300;
+        }
+
+        .centered { text-align: center; }
+        .centered .section-desc { margin: 0 auto; }
+
+        /* ===== MISSION ===== */
+        .mission {
+            background: var(--green-dark);
+            color: #fff;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .mission .section-title { color: #fff; }
+        .mission .section-desc { color: rgba(255,255,255,0.65); }
+
+        .mission-quote {
+            font-family: 'Playfair Display', serif;
+            font-size: 22px;
+            font-style: italic;
+            color: var(--green-accent);
+            line-height: 1.6;
+            margin: 28px 0;
+            padding-left: 24px;
+            border-left: 3px solid var(--green-accent);
+        }
+
+        .mission-image {
+            border-radius: var(--radius);
+            overflow: hidden;
+            height: 480px;
+        }
+
+        .mission-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* ===== TRANSFORMATION ===== */
+        .transformation { background: var(--cream); }
+
+        .transform-grid {
+            display: grid;
+            grid-template-columns: 1fr 80px 1fr;
+            align-items: center;
+            max-width: 900px;
+            margin: 48px auto 0;
+        }
+
+        .transform-card {
+            border-radius: var(--radius);
+            overflow: hidden;
+            position: relative;
+            height: 380px;
+            box-shadow: 0 12px 40px rgba(0,0,0,0.1);
+        }
+
+        .transform-card img { width: 100%; height: 100%; object-fit: cover; }
+
+        .transform-card .overlay-label {
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            padding: 28px;
+            background: linear-gradient(transparent, rgba(0,0,0,0.8));
+        }
+
+        .transform-card .overlay-label h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 22px;
+            color: #fff;
+            margin-bottom: 4px;
+        }
+
+        .transform-card .overlay-label p {
+            font-size: 13px;
+            color: rgba(255,255,255,0.6);
+        }
+
+        .transform-arrow {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .transform-arrow svg { width: 36px; height: 36px; color: var(--green-accent); }
+
+        .transform-arrow span {
+            font-size: 10px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--text-light);
+            font-weight: 600;
+        }
+
+        /* ===== PILLARS ===== */
+        .pillars { background: #fff; }
+
+        .pillars-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 28px;
+            max-width: 1100px;
+            margin: 48px auto 0;
+        }
+
+        .pillar-card {
+            padding: 44px 32px;
+            border-radius: var(--radius);
+            background: var(--cream);
+            border: 1px solid rgba(0,0,0,0.04);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .pillar-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 4px;
+            background: linear-gradient(to right, var(--green-mid), var(--green-accent));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s ease;
+        }
+
+        .pillar-card:hover::before { transform: scaleX(1); }
+        .pillar-card:hover { transform: translateY(-4px); box-shadow: 0 16px 48px rgba(0,0,0,0.08); }
+
+        .pillar-icon {
+            width: 52px; height: 52px;
+            background: var(--green-dark);
+            border-radius: 10px;
+            display: flex; align-items: center; justify-content: center;
+            margin-bottom: 22px;
+            color: var(--green-accent);
+        }
+
+        .pillar-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: var(--green-dark);
+        }
+
+        .pillar-card p {
+            font-size: 15px;
+            line-height: 1.7;
+            color: var(--text-light);
+            font-weight: 300;
+        }
+
+        /* ===== SITES ===== */
+        .sites { background: var(--cream); }
+
+        .sites-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 36px;
+            margin-top: 44px;
+        }
+
+        .site-card {
+            background: #fff;
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+            transition: transform 0.3s;
+        }
+
+        .site-card:hover { transform: translateY(-4px); }
+
+        .site-card-img { height: 260px; overflow: hidden; }
+        .site-card-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s; }
+        .site-card:hover .site-card-img img { transform: scale(1.05); }
+
+        .site-card-body { padding: 28px 32px; }
+
+        .site-card-body h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 6px;
+            color: var(--green-dark);
+        }
+
+        .site-card-body .address {
+            font-size: 14px;
+            color: var(--text-light);
+            margin-bottom: 14px;
+        }
+
+        .site-card-body p { font-size: 14px; line-height: 1.7; color: var(--text-light); }
+
+        /* ===== FOUNDER ===== */
+        .founder {
+            background: var(--green-dark);
+            color: #fff;
+            display: grid;
+            grid-template-columns: 380px 1fr;
+            gap: 72px;
+            align-items: center;
+        }
+
+        .founder-img {
+            border-radius: var(--radius);
+            overflow: hidden;
+            height: 480px;
+        }
+
+        .founder-img img { width: 100%; height: 100%; object-fit: cover; }
+        .founder .section-title { color: #fff; }
+
+        .founder-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 20px;
+            color: var(--green-accent);
+            margin-bottom: 6px;
+        }
+
+        .founder-role {
+            font-size: 13px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.45);
+            margin-bottom: 22px;
+        }
+
+        .founder-bio {
+            font-size: 16px;
+            line-height: 1.8;
+            color: rgba(255,255,255,0.65);
+            font-weight: 300;
+            margin-bottom: 16px;
+        }
+
+        .founder-creds {
+            display: flex;
+            gap: 16px;
+            margin-top: 28px;
+            flex-wrap: wrap;
+        }
+
+        .cred {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            background: rgba(255,255,255,0.06);
+            border-radius: 6px;
+            border: 1px solid rgba(255,255,255,0.08);
+            font-size: 13px;
+            color: rgba(255,255,255,0.7);
+        }
+
+        /* ===== TIMELINE GALLERY ===== */
+        .timeline-gallery { background: #fff; }
+
+        .timeline-gallery .section-desc { margin-bottom: 56px; }
+
+        .timeline {
+            position: relative;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, var(--green-accent), var(--green-dark));
+            transform: translateX(-50%);
+        }
+
+        .timeline-year {
+            position: relative;
+            margin-bottom: 60px;
+        }
+
+        .timeline-year:last-child { margin-bottom: 0; }
+
+        .year-marker {
+            position: relative;
+            text-align: center;
+            margin-bottom: 36px;
+            z-index: 2;
+        }
+
+        .year-marker span {
+            display: inline-block;
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
+            font-weight: 900;
+            color: var(--green-dark);
+            background: #fff;
+            padding: 8px 28px;
+            border: 2px solid var(--green-accent);
+            border-radius: 30px;
+        }
+
+        .timeline-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            margin-bottom: 28px;
+            position: relative;
+        }
+
+        .timeline-item {
+            position: relative;
+        }
+
+        .timeline-item.right {
+            grid-column: 2;
+        }
+
+        .timeline-item.left {
+            grid-column: 1;
+        }
+
+        .timeline-dot {
+            display: none; /* hide dots on mobile, show desktop */
+        }
+
+        .tl-img {
+            border-radius: var(--radius);
+            overflow: hidden;
+            height: 240px;
+            margin-bottom: 14px;
+            box-shadow: 0 8px 28px rgba(0,0,0,0.1);
+        }
+
+        .tl-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .tl-img:hover img { transform: scale(1.05); }
+
+        .tl-caption {
+            padding: 0 4px;
+        }
+
+        .tl-season {
+            font-size: 11px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--green-accent);
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .tl-caption h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 17px;
+            font-weight: 700;
+            color: var(--green-dark);
+            margin-bottom: 4px;
+        }
+
+        .tl-caption p {
+            font-size: 13px;
+            line-height: 1.6;
+            color: var(--text-light);
+        }
+
+        /* Mosaic sub-grid for years with many photos */
+        .mosaic {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+
+        .mosaic .tl-img { height: 180px; margin-bottom: 0; }
+        .mosaic .tl-img.wide { grid-column: span 2; height: 240px; }
+
+        /* ===== GALLERY GRID (quick visual gallery) ===== */
+        .photo-wall {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 8px;
+            margin-top: 40px;
+        }
+
+        .photo-wall-item {
+            border-radius: 8px;
+            overflow: hidden;
+            height: 220px;
+            cursor: pointer;
+        }
+
+        .photo-wall-item.featured {
+            grid-column: span 2;
+            grid-row: span 2;
+            height: 448px;
+        }
+
+        .photo-wall-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .photo-wall-item:hover img { transform: scale(1.06); }
+
+        /* ===== GET INVOLVED ===== */
+        .get-involved {
+            background: linear-gradient(135deg, var(--green-dark) 0%, #1a4d1a 100%);
+            color: #fff;
+        }
+
+        .get-involved .section-title { color: #fff; }
+        .get-involved .section-desc { color: rgba(255,255,255,0.6); margin: 0 auto 44px; }
+
+        .involve-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            max-width: 900px;
+            margin: 0 auto 44px;
+        }
+
+        .involve-card {
+            padding: 32px 24px;
+            background: rgba(255,255,255,0.06);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: var(--radius);
+            transition: all 0.3s;
+        }
+
+        .involve-card:hover {
+            background: rgba(255,255,255,0.1);
+            transform: translateY(-4px);
+        }
+
+        .involve-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 20px;
+            margin-bottom: 10px;
+            color: var(--green-accent);
+        }
+
+        .involve-card p { font-size: 14px; line-height: 1.6; color: rgba(255,255,255,0.55); }
+
+        /* ===== RESOURCES ===== */
+        .resources { background: var(--cream); }
+
+        .resources-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            margin-top: 36px;
+            list-style: none;
+        }
+
+        .resources-grid li {
+            padding: 18px 22px;
+            background: #fff;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--green-dark);
+            border-left: 3px solid var(--green-accent);
+            transition: transform 0.2s;
+        }
+
+        .resources-grid li:hover { transform: translateX(4px); }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background: var(--charcoal);
+            color: #fff;
+            padding: 56px 80px 36px;
+        }
+
+        .footer-top {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 56px;
+            margin-bottom: 40px;
+        }
+
+        .footer-brand {
+            font-family: 'Playfair Display', serif;
+            font-size: 26px;
+            font-weight: 900;
+            margin-bottom: 14px;
+        }
+
+        .footer-brand span { color: var(--green-accent); }
+
+        .footer-tagline {
+            font-size: 14px;
+            line-height: 1.7;
+            color: rgba(255,255,255,0.45);
+            max-width: 300px;
+        }
+
+        .footer-col h4 {
+            font-size: 11px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--green-accent);
+            margin-bottom: 18px;
+            font-weight: 600;
+        }
+
+        .footer-col a, .footer-col p {
+            display: block;
+            font-size: 14px;
+            color: rgba(255,255,255,0.5);
+            text-decoration: none;
+            margin-bottom: 10px;
+            transition: color 0.2s;
+        }
+
+        .footer-col a:hover { color: #fff; }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.08);
+            padding-top: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .footer-bottom p { font-size: 13px; color: rgba(255,255,255,0.3); }
+
+        .social-links { display: flex; gap: 12px; }
+
+        .social-links a {
+            width: 36px; height: 36px;
+            border-radius: 8px;
+            background: rgba(255,255,255,0.06);
+            display: flex; align-items: center; justify-content: center;
+            color: rgba(255,255,255,0.5);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .social-links a:hover { background: var(--green-accent); color: var(--green-dark); }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 1024px) {
+            section { padding: 80px 40px; }
+            .hero-content { padding: 0 40px 60px; }
+            .mission, .founder { grid-template-columns: 1fr; gap: 40px; }
+            .founder-img { height: 340px; }
+            .footer-top { grid-template-columns: 1fr 1fr; gap: 36px; }
+            .timeline::before { left: 24px; }
+            .timeline-row { grid-template-columns: 1fr; gap: 28px; padding-left: 56px; }
+            .timeline-item.right, .timeline-item.left { grid-column: 1; }
+            .year-marker { text-align: left; padding-left: 56px; }
+            .year-marker span { font-size: 22px; padding: 6px 20px; }
+        }
+
+        @media (max-width: 768px) {
+            section { padding: 56px 20px; }
+            footer { padding: 44px 20px 28px; }
+            .hero-content { padding: 0 20px 44px; }
+            nav { padding: 14px 20px; }
+            nav.scrolled { padding: 12px 20px; }
+
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: fixed;
+                top: 0; left: 0; right: 0; bottom: 0;
+                background: rgba(27,58,26,0.98);
+                justify-content: center;
+                align-items: center;
+                gap: 24px;
+                z-index: 101;
+            }
+
+            .nav-links.open { display: flex; }
+            .nav-links.open a { font-size: 18px; }
+            .mobile-toggle { display: block; }
+
+            .hero h1 { font-size: 42px; letter-spacing: -1px; }
+            .hero-tagline { font-size: 18px; }
+            .hero-desc { font-size: 14px; }
+
+            .pillars-grid { grid-template-columns: 1fr; }
+            .sites-grid { grid-template-columns: 1fr; }
+            .involve-grid { grid-template-columns: 1fr; }
+            .resources-grid { grid-template-columns: 1fr; }
+            .footer-top { grid-template-columns: 1fr; gap: 28px; }
+
+            .transform-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            .transform-card { height: 260px; }
+            .transform-arrow {
+                flex-direction: row;
+                justify-content: center;
+            }
+            .transform-arrow svg { transform: rotate(90deg); }
+
+            .timeline::before { left: 16px; }
+            .timeline-row { padding-left: 40px; }
+            .year-marker { padding-left: 40px; }
+
+            .photo-wall {
+                grid-template-columns: 1fr 1fr;
+                gap: 6px;
+            }
+            .photo-wall-item { height: 160px; }
+            .photo-wall-item.featured { height: 326px; }
+
+            .mosaic .tl-img { height: 140px; }
+            .mosaic .tl-img.wide { height: 180px; }
+
+            .mission-image { height: 300px; }
+        }
+
+        @media (max-width: 480px) {
+            .hero-actions { flex-direction: column; }
+            .btn { width: 100%; justify-content: center; }
+            .photo-wall { grid-template-columns: 1fr; }
+            .photo-wall-item.featured { grid-column: 1; height: 260px; }
+            .photo-wall-item { height: 200px; }
+            .mosaic { grid-template-columns: 1fr; }
+            .mosaic .tl-img.wide { grid-column: 1; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="navbar">
+    <a href="#" class="nav-brand"><span>Sennel</span> Gardens</a>
+    <ul class="nav-links" id="navLinks">
+        <li><a href="#mission" onclick="closeNav()">Mission</a></li>
+        <li><a href="#pillars" onclick="closeNav()">Impact</a></li>
+        <li><a href="#sites" onclick="closeNav()">Sites</a></li>
+        <li><a href="#founder" onclick="closeNav()">Founder</a></li>
+        <li><a href="#journey" onclick="closeNav()">Our Journey</a></li>
+        <li><a href="#involved" onclick="closeNav()" class="nav-cta">Get Involved</a></li>
+    </ul>
+    <button class="mobile-toggle" onclick="toggleNav()" aria-label="Menu">
+        <span></span><span></span><span></span>
+    </button>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+    <div class="hero-bg">
+        <img src="images/2025-summer-peak-production.jpg" alt="Sennel Gardens in full summer production — rows of vegetables with row covers and sunflowers">
+    </div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+        <span class="hero-badge">501(c)(3) Nonprofit &bull; Washington, DC</span>
+        <h1><em>Sennel</em><br>Gardens</h1>
+        <p class="hero-tagline">"Grow what you can, where you can."</p>
+        <p class="hero-desc">
+            Transforming vacant lots in DC's Ward 7 into thriving urban farms —
+            growing fresh food, creating local jobs, and building community
+            resilience one harvest at a time.
+        </p>
+        <div class="hero-actions">
+            <a href="#involved" class="btn btn-primary">Volunteer With Us</a>
+            <a href="#journey" class="btn btn-outline">See Our Journey</a>
+        </div>
+    </div>
+    <div class="scroll-hint"><span></span></div>
+</section>
+
+<!-- MISSION -->
+<section class="mission" id="mission">
+    <div>
+        <span class="section-label">Our Mission</span>
+        <h2 class="section-title">Turning Blight<br>Into Bounty</h2>
+        <p class="section-desc">
+            Sennel Gardens is a volunteer-led, community-driven 501(c)(3) nonprofit
+            headquartered in Washington, DC. We utilize no-till and low-till farming
+            practices to transform vacant, neglected lots into productive communal farms.
+        </p>
+        <blockquote class="mission-quote">
+            "One should grow what you can, where you can. Whether it is 1,000 acres
+            or 1 square foot, nutritious produce can be grown in all spaces."
+        </blockquote>
+        <p class="section-desc">
+            Vacant land doesn't generate tax revenue. It doesn't create jobs. It
+            collects litter and drains community pride. We see every empty lot as an
+            opportunity to feed families, employ neighbors, and restore dignity.
+        </p>
+    </div>
+    <div class="mission-image">
+        <img src="images/2025-summer-harvest-day.jpg" alt="Volunteers harvesting produce at Sennel Gardens with crates of fresh greens">
+    </div>
+</section>
+
+<!-- TRANSFORMATION -->
+<section class="transformation centered" id="transform">
+    <span class="section-label">The Transformation</span>
+    <h2 class="section-title">From Vacant Lots to Vibrant Farms</h2>
+    <p class="section-desc">
+        Every Sennel Gardens site starts the same way — an abandoned, blighted lot
+        that nobody sees potential in. We see a farm.
+    </p>
+    <div class="transform-grid">
+        <div class="transform-card">
+            <img src="images/2024-winter-cleanup.jpg" alt="Vacant lot with debris and trash — before Sennel Gardens">
+            <div class="overlay-label">
+                <h3>Before</h3>
+                <p>Vacant, blighted, forgotten</p>
+            </div>
+        </div>
+        <div class="transform-arrow">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            <span>Sennel</span>
+        </div>
+        <div class="transform-card">
+            <img src="images/2025-summer-peak-production.jpg" alt="Thriving urban farm with row covers and sunflowers — after Sennel Gardens">
+            <div class="overlay-label">
+                <h3>After</h3>
+                <p>Productive, beautiful, nourishing</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- PILLARS -->
+<section class="pillars centered" id="pillars">
+    <span class="section-label">Our Impact</span>
+    <h2 class="section-title">Three Pillars of Growth</h2>
+    <p class="section-desc">
+        Everything we do is rooted in three principles that drive lasting change.
+    </p>
+    <div class="pillars-grid">
+        <div class="pillar-card">
+            <div class="pillar-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22V12"/><path d="M12 12C12 12 8 8 8 5a4 4 0 0 1 8 0c0 3-4 7-4 7z"/><path d="M12 12c-2-2-5-3-7-2"/><path d="M12 12c2-2 5-3 7-2"/></svg>
+            </div>
+            <h3>Enrichment</h3>
+            <p>
+                Self-growth through cultivation. Whether it's 1,000 acres or 1 square
+                foot, we believe in growing where you are. Every volunteer leaves with
+                new skills and deeper roots in their community.
+            </p>
+        </div>
+        <div class="pillar-card">
+            <div class="pillar-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a7 7 0 0 0-7 7c0 5 7 11 7 11s7-6 7-11a7 7 0 0 0-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+            </div>
+            <h3>Nutrition</h3>
+            <p>
+                Reducing the distance residents travel to access fresh, nutritious food.
+                We increase community resilience and improve health outcomes by putting
+                farms where food deserts used to be.
+            </p>
+        </div>
+        <div class="pillar-card">
+            <div class="pillar-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20V10"/><path d="M18 20V4"/><path d="M6 20v-4"/><rect x="4" y="16" width="4" height="4" rx="1"/><rect x="10" y="10" width="4" height="10" rx="1"/><rect x="16" y="4" width="4" height="16" rx="1"/></svg>
+            </div>
+            <h3>Economic Growth</h3>
+            <p>
+                Each location creates employment and revenue opportunities in the DC
+                metro area. Volunteers and employees gain professional and personal
+                development skills that extend far beyond the garden.
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- SITES -->
+<section class="sites" id="sites">
+    <span class="section-label">Our Locations</span>
+    <h2 class="section-title">Garden Sites</h2>
+    <p class="section-desc">
+        Two active sites in DC's Ward 7, with plans to expand through the
+        city's Urban Farm Tax Abatement Program.
+    </p>
+    <div class="sites-grid">
+        <div class="site-card">
+            <div class="site-card-img">
+                <img src="images/2023-summer-full-growth.jpg" alt="45th Street farm in full summer growth">
+            </div>
+            <div class="site-card-body">
+                <h3>45th Street Farm</h3>
+                <p class="address">520 45th St NE, Washington, DC 20019</p>
+                <p>
+                    Our original site since 2023. What began as a vacant lot is now a
+                    productive communal farm with cultivated rows, composting, row covers,
+                    and seasonal harvests serving the surrounding neighborhood.
+                </p>
+            </div>
+        </div>
+        <div class="site-card">
+            <div class="site-card-img">
+                <img src="images/slide21_img12.jpg" alt="Foote Street garden with mulched beds">
+            </div>
+            <div class="site-card-body">
+                <h3>Foote Street Farm</h3>
+                <p class="address">4419 Foote St NE, Washington, DC 20019</p>
+                <p>
+                    Our second location, expanding Sennel Gardens' reach deeper into
+                    Ward 7. Features mulched beds, no-till practices, and a growing
+                    variety of produce for the local community.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FOUNDER -->
+<section class="founder" id="founder">
+    <div class="founder-img">
+        <img src="images/slide5_img2.jpg" alt="Emmanuel 'Manny' McDaniel — Founder of Sennel Gardens">
+    </div>
+    <div>
+        <span class="section-label">The Founder</span>
+        <h2 class="section-title">Meet Manny</h2>
+        <p class="founder-name">Emmanuel Euphrates McDaniel</p>
+        <p class="founder-role">Founder &bull; Sennel Gardens</p>
+        <p class="founder-bio">
+            Emmanuel "Manny" McDaniel founded Sennel Gardens in 2023 with a simple
+            conviction: every vacant lot is a missed opportunity to feed a family.
+            A graduate of ECO City Farm's Beginner Farmer Training Program, Manny
+            brought hands-on agricultural training together with deep community ties
+            to build something lasting.
+        </p>
+        <p class="founder-bio">
+            Under his leadership, Sennel Gardens has grown from a single vacant lot
+            to multiple sites across DC, all operated through volunteer power and
+            community partnerships. His vision extends beyond food — he's growing
+            economic opportunity, environmental stewardship, and neighborhood pride.
+        </p>
+        <div class="founder-creds">
+            <div class="cred">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 2 3 3 6 3s6-1 6-3v-5"/></svg>
+                ECO City Farm Graduate
+            </div>
+            <div class="cred">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22V12"/><path d="M12 8c-2-3-6-4-8-2"/><path d="M12 8c2-3 6-4 8-2"/><path d="M12 12c-1.5-2.5-4-4-6-3"/><path d="M12 12c1.5-2.5 4-4 6-3"/></svg>
+                No-Till Practitioner
+            </div>
+            <div class="cred">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="8" width="18" height="14" rx="2"/><path d="M3 12h18"/><path d="M12 8v14"/><path d="M7 2v4"/><path d="M17 2v4"/></svg>
+                DC Urban Farmer
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- TIMELINE GALLERY -->
+<section class="timeline-gallery centered" id="journey">
+    <span class="section-label">Our Journey</span>
+    <h2 class="section-title">From Empty Lot to Urban Farm</h2>
+    <p class="section-desc">
+        Two and a half years of transformation — season by season, row by row.
+        Every photo tells a piece of the story.
+    </p>
+
+    <div class="timeline">
+
+        <!-- 2023 -->
+        <div class="timeline-year">
+            <div class="year-marker"><span>2023</span></div>
+
+            <div class="timeline-row">
+                <div class="timeline-item left">
+                    <div class="tl-img">
+                        <img src="images/2023-spring-empty-lot.jpg" alt="March 2023 — the empty lot before anything began">
+                    </div>
+                    <div class="tl-caption">
+                        <p class="tl-season">Spring &bull; March</p>
+                        <h4>The Beginning</h4>
+                        <p>An empty, overgrown vacant lot in Ward 7. Nothing but grass, bare trees, and potential.</p>
+                    </div>
+                </div>
+                <div class="timeline-item right">
+                    <div class="tl-img">
+                        <img src="images/2023-spring-staking-rows.jpg" alt="April 2023 — stakes marking future garden rows">
+                    </div>
+                    <div class="tl-caption">
+                        <p class="tl-season">Spring &bull; April</p>
+                        <h4>Staking the Vision</h4>
+                        <p>Wooden stakes mark where rows will go. The first physical imprint of Sennel Gardens on the land.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="timeline-row">
+                <div class="timeline-item left">
+                    <div class="tl-img">
+                        <img src="images/2023-spring-first-tilling.jpg" alt="April 2023 — first rows tilled into the earth">
+                    </div>
+                    <div class="tl-caption">
+                        <p class="tl-season">Spring &bull; Late April</p>
+                        <h4>First Rows Tilled</h4>
+                        <p>Breaking ground. The first rows are carved into the soil — the lot is becoming a farm.</p>
+                    </div>
+                </div>
+                <div class="timeline-item right">
+                    <div class="tl-img">
+                        <img src="images/2023-summer-full-growth.jpg" alt="July 2023 — rows of plants in full summer growth">
+                    </div>
+                    <div class="tl-caption">
+                        <p class="tl-season">Summer &bull; July</p>
+                        <h4>First Harvest Season</h4>
+                        <p>Just four months later — lush, full rows of produce. The vacant lot is unrecognizable.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="timeline-row">
+                <div class="timeline-item left">
+                    <div class="tl-img">
+                        <img src="images/2023-fall-harvest-beds.jpg" alt="October 2023 — fall garden beds still producing">
+                    </div>
+                    <div class="tl-caption">
+                        <p class="tl-season">Fall &bull; October</p>
+                        <h4>Fall Production</h4>
+                        <p>The garden keeps producing into autumn. Multiple beds in varying stages of growth and harvest.</p>
+                    </div>
+                </div>
+                <div class="timeline-item right">
+                    <div class="tl-img">
+                        <img src="images/2023-fall-mulched-rows.jpg" alt="October 2023 — mulched rows with fall plantings">
+                    </div>
+                    <div class="tl-caption">
+                        <p class="tl-season">Fall &bull; October</p>
+                        <h4>Building Soil</h4>
+                        <p>Mulched rows and composting practices build soil health for the next season.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 2024 -->
+        <div class="timeline-year">
+            <div class="year-marker"><span>2024</span></div>
+
+            <div class="timeline-row">
+                <div class="timeline-item left">
+                    <div class="tl-img">
+                        <img src="images/2024-winter-cleanup.jpg" alt="January 2024 — winter lot cleanup, removing debris">
+                    </div>
+                    <div class="tl-caption">
+                        <p class="tl-season">Winter &bull; January</p>
+                        <h4>Winter Cleanup</h4>
+                        <p>The hard, unglamorous work. Clearing debris, bagging trash, and prepping the land for year two.</p>
+                    </div>
+                </div>
+                <div class="timeline-item right">
+                    <div class="tl-img">
+                        <img src="images/2024-spring-infrastructure.jpg" alt="May 2024 — wheelbarrow, soil, and IBC water tanks">
+                    </div>
+                    <div class="tl-caption">
+                        <p class="tl-season">Spring &bull; May</p>
+                        <h4>Building Infrastructure</h4>
+                        <p>Year two brings real infrastructure — IBC water tanks, tools, compost, and a growing operation.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="timeline-row">
+                <div class="timeline-item left">
+                    <div class="tl-img">
+                        <img src="images/2024-summer-bed-prep.jpg" alt="June 2024 — cardboard sheet mulching and new bed preparation">
+                    </div>
+                    <div class="tl-caption">
+                        <p class="tl-season">Summer &bull; June</p>
+                        <h4>Sheet Mulching &amp; Expansion</h4>
+                        <p>Cardboard sheet mulching smothers weeds naturally. New beds expand the farm's footprint.</p>
+                    </div>
+                </div>
+                <div class="timeline-item right">
+                    <div class="tl-img">
+                        <img src="images/2024-winter-overwintering.jpg" alt="December 2024 — overwintering with mulch and grow bags">
+                    </div>
+                    <div class="tl-caption">
+                        <p class="tl-season">Winter &bull; December</p>
+                        <h4>Overwintering</h4>
+                        <p>Heavy mulch, straw bales, and grow bags protect plants through the cold months. The farm never stops.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 2025 -->
+        <div class="timeline-year">
+            <div class="year-marker"><span>2025</span></div>
+
+            <div class="timeline-row">
+                <div class="timeline-item left">
+                    <div class="tl-img">
+                        <img src="images/2025-spring-row-covers.jpg" alt="April 2025 — low tunnel row covers protecting spring crops">
+                    </div>
+                    <div class="tl-caption">
+                        <p class="tl-season">Spring &bull; April</p>
+                        <h4>Row Cover Technology</h4>
+                        <p>Low tunnel row covers extend the growing season and protect young crops. The farm is getting more sophisticated.</p>
+                    </div>
+                </div>
+                <div class="timeline-item right">
+                    <div class="tl-img">
+                        <img src="images/2025-spring-greens-growing.jpg" alt="May 2025 — leafy greens growing under row covers">
+                    </div>
+                    <div class="tl-caption">
+                        <p class="tl-season">Spring &bull; May</p>
+                        <h4>Greens Growing Strong</h4>
+                        <p>Lush greens thrive under row covers. The mulched pathways show a well-organized, productive operation.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="timeline-row">
+                <div class="timeline-item left">
+                    <div class="tl-img">
+                        <img src="images/2025-summer-harvest-day.jpg" alt="June 2025 — volunteers harvesting produce into crates">
+                    </div>
+                    <div class="tl-caption">
+                        <p class="tl-season">Summer &bull; June</p>
+                        <h4>Harvest Day</h4>
+                        <p>Crates full of fresh produce. Volunteers working together. This is what Sennel Gardens is all about.</p>
+                    </div>
+                </div>
+                <div class="timeline-item right">
+                    <div class="tl-img">
+                        <img src="images/2025-summer-peak-production.jpg" alt="August 2025 — peak summer production with sunflowers and vegetables">
+                    </div>
+                    <div class="tl-caption">
+                        <p class="tl-season">Summer &bull; August</p>
+                        <h4>Peak Production</h4>
+                        <p>Full summer glory. Row covers, sunflowers, tomatoes, brassicas — the farm is at its most abundant.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="timeline-row">
+                <div class="timeline-item left">
+                    <div class="mosaic">
+                        <div class="tl-img">
+                            <img src="images/2025-fall-kale-closeup.jpg" alt="October 2025 — massive kale and brassica plants">
+                        </div>
+                        <div class="tl-img">
+                            <img src="images/2025-fall-brassicas-marigolds.jpg" alt="October 2025 — brassicas with companion marigolds">
+                        </div>
+                    </div>
+                    <div class="tl-caption">
+                        <p class="tl-season">Fall &bull; October</p>
+                        <h4>Still Growing Strong</h4>
+                        <p>Massive kale, broccoli, and companion-planted marigolds. Two and a half years in, the soil is rich and the harvests keep coming.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- PHOTO WALL -->
+<section style="background: var(--green-dark); padding: 60px 20px;">
+    <div class="photo-wall">
+        <div class="photo-wall-item featured">
+            <img src="images/2025-summer-peak-production.jpg" alt="Peak production — summer 2025">
+        </div>
+        <div class="photo-wall-item">
+            <img src="images/2023-spring-empty-lot.jpg" alt="Where it all started — spring 2023">
+        </div>
+        <div class="photo-wall-item">
+            <img src="images/2025-spring-row-covers.jpg" alt="Row cover technology">
+        </div>
+        <div class="photo-wall-item">
+            <img src="images/slide6_img3.jpg" alt="Inside the hoop house">
+        </div>
+        <div class="photo-wall-item">
+            <img src="images/2025-fall-kale-closeup.jpg" alt="Kale and brassicas close up">
+        </div>
+        <div class="photo-wall-item">
+            <img src="images/slide13_img6.jpg" alt="Lush garden with sunflowers">
+        </div>
+        <div class="photo-wall-item">
+            <img src="images/2025-summer-harvest-day.jpg" alt="Harvest day">
+        </div>
+    </div>
+</section>
+
+<!-- GET INVOLVED -->
+<section class="get-involved centered" id="involved">
+    <span class="section-label">Join Us</span>
+    <h2 class="section-title">Get Involved</h2>
+    <p class="section-desc">
+        Sennel Gardens is volunteer-led and community-driven. There are many ways
+        to be part of the harvest.
+    </p>
+    <div class="involve-grid">
+        <div class="involve-card">
+            <h3>Volunteer</h3>
+            <p>Join us at one of our garden sites. No experience needed — just a willingness to get your hands in the soil and learn.</p>
+        </div>
+        <div class="involve-card">
+            <h3>Donate</h3>
+            <p>As a 501(c)(3), your tax-deductible contribution goes directly to tools, seeds, soil, and site development.</p>
+        </div>
+        <div class="involve-card">
+            <h3>Partner</h3>
+            <p>We work with land grant universities, USDA programs, local orgs, and community groups to expand our impact.</p>
+        </div>
+    </div>
+    <a href="mailto:sennelgardens@gmail.com" class="btn btn-primary" style="font-size: 16px; padding: 16px 40px;">Contact Us &rarr;</a>
+</section>
+
+<!-- RESOURCES -->
+<section class="resources" id="resources">
+    <span class="section-label">Resources</span>
+    <h2 class="section-title">Start Your Own</h2>
+    <p class="section-desc">
+        Interested in urban farming? Here are the organizations and programs that helped us.
+    </p>
+    <ul class="resources-grid">
+        <li>Land Grant University Extension</li>
+        <li>USDA NRCS / E-QIP Programs</li>
+        <li>PG County Soil Conservation District</li>
+        <li>ECO City Farms</li>
+        <li>City Blossoms</li>
+        <li>Lederer Gardens</li>
+        <li>DC Urban Farm Tax Abatement</li>
+        <li>PropertyQuest &bull; mytax.dc.gov</li>
+        <li>DC Dept of Agriculture</li>
+    </ul>
+</section>
+
+<!-- FOOTER -->
+<footer>
+    <div class="footer-top">
+        <div>
+            <div class="footer-brand"><span>Sennel</span> Gardens</div>
+            <p class="footer-tagline">
+                A 501(c)(3) nonprofit transforming vacant lots into thriving
+                urban farms in Washington, DC. Volunteer-led. Community-driven.
+            </p>
+        </div>
+        <div class="footer-col">
+            <h4>Navigate</h4>
+            <a href="#mission">Mission</a>
+            <a href="#pillars">Impact</a>
+            <a href="#sites">Sites</a>
+            <a href="#founder">Founder</a>
+            <a href="#journey">Our Journey</a>
+        </div>
+        <div class="footer-col">
+            <h4>Contact</h4>
+            <a href="mailto:sennelgardens@gmail.com">sennelgardens@gmail.com</a>
+            <a href="tel:2028549244">(202) 854-9244</a>
+            <p>PO Box 36451<br>Washington, DC 20020</p>
+        </div>
+        <div class="footer-col">
+            <h4>Legal</h4>
+            <p>EIN: 38-4330572</p>
+            <p>501(c)(3) Tax-Exempt</p>
+            <p>Est. 2023</p>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>&copy; 2025 Sennel Gardens. All rights reserved.</p>
+        <div class="social-links">
+            <a href="https://www.facebook.com/sennelgardens" target="_blank" aria-label="Facebook">fb</a>
+            <a href="https://www.instagram.com/sennelgardens" target="_blank" aria-label="Instagram">ig</a>
+        </div>
+    </div>
+</footer>
+
+<script>
+    // Navbar scroll
+    const nb = document.getElementById('navbar');
+    window.addEventListener('scroll', () => nb.classList.toggle('scrolled', window.scrollY > 60));
+
+    // Mobile nav
+    function toggleNav() { document.getElementById('navLinks').classList.toggle('open'); }
+    function closeNav() { document.getElementById('navLinks').classList.remove('open'); }
+</script>
+</body>
+</html>
