@@ -764,6 +764,13 @@
             border-color: #fff;
         }
 
+        .card-cta-stack {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            align-items: flex-start;
+        }
+
         /* ===== RESOURCES ===== */
         .resources { background: var(--cream); }
 
@@ -1169,6 +1176,19 @@
     </div>
 </section>
 
+<!-- ROOTING DC -->
+<section class="rooting-dc centered" id="rooting-dc" style="background: var(--green-dark); color: #fff; padding: 80px 80px;">
+    <span class="section-label" style="color: var(--green-accent);">As Presented At</span>
+    <h2 class="section-title" style="color: #fff; font-size: clamp(26px, 3.4vw, 40px); max-width: 780px; margin-left: auto; margin-right: auto;">Rooting DC</h2>
+    <p class="section-desc" style="color: rgba(255,255,255,0.7); max-width: 640px; margin: 0 auto 32px;">
+        Sennel Gardens presented at Rooting DC, the District's annual urban agriculture conference hosted by the DC Department of Energy and Environment. Our session covered utilizing vacant lots for gardening and farming.
+    </p>
+    <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
+        <a href="https://doee.dc.gov/sites/default/files/dc/sites/doee/service_content/attachments/Utilization%20of%20Vacant%20Lots%20for%20Gardening%20and%20Farming.pdf" target="_blank" rel="noopener" class="btn btn-primary" style="background: var(--green-accent); color: var(--green-dark);">Read the Presentation (PDF) &rarr;</a>
+        <a href="https://doee.dc.gov/service/rooting-dc" target="_blank" rel="noopener" class="btn btn-outline">About Rooting DC &rarr;</a>
+    </div>
+</section>
+
 <!-- STORY VIDEO -->
 <section class="story-video centered" id="story" style="background: var(--cream); padding: 100px 80px;">
     <span class="section-label">Watch Our Story</span>
@@ -1434,7 +1454,10 @@
         <div class="involve-card">
             <h3>Volunteer</h3>
             <p>Join us at one of our garden sites. No experience needed, just a willingness to get your hands in the soil and learn.</p>
-            <a class="card-cta" href="https://www.idealist.org/en/volunteer-opportunity/c115d496de8b4656a07920eb09d9ccd8-garden-hand-sennel-gardens-washington" target="_blank" rel="noopener">Sign up on Idealist &rarr;</a>
+            <div class="card-cta-stack">
+                <a class="card-cta" href="https://www.idealist.org/en/volunteer-opportunity/c115d496de8b4656a07920eb09d9ccd8-garden-hand-sennel-gardens-washington" target="_blank" rel="noopener">Sign up on Idealist &rarr;</a>
+                <a class="card-cta" href="https://donaroo.org/volunteer/district-of-columbia/washington/volunteer-to-cultivate-and-maintain-urban-farms-sennelgardens-com" target="_blank" rel="noopener">Sign up on Donaroo &rarr;</a>
+            </div>
         </div>
         <div class="involve-card">
             <h3>Donate</h3>
@@ -1448,6 +1471,12 @@
         </div>
     </div>
     <a href="mailto:sennelgardens@gmail.com" class="btn btn-primary" style="font-size: 16px; padding: 16px 40px;">Contact Us &rarr;</a>
+
+    <div style="margin: 64px auto 0; max-width: 560px;">
+        <p style="font-size: 13px; letter-spacing: 2px; text-transform: uppercase; color: var(--green-accent); font-weight: 600; margin-bottom: 20px;">Recent Volunteer Day</p>
+        <blockquote class="instagram-media" data-instgrm-captioned data-instgrm-permalink="https://www.instagram.com/p/DYccUQwlqnH/?utm_source=ig_embed&amp;utm_campaign=loading" data-instgrm-version="14" style=" background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px auto; max-width:540px; min-width:326px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);"><div style="padding:16px;"> <a href="https://www.instagram.com/p/DYccUQwlqnH/?utm_source=ig_embed&amp;utm_campaign=loading" style=" background:#FFFFFF; line-height:0; padding:0 0; text-align:center; text-decoration:none; width:100%;" target="_blank" rel="noopener">View this post on Instagram</a></div></blockquote>
+        <script async src="https://www.instagram.com/embed.js"></script>
+    </div>
 </section>
 
 <!-- RESOURCES -->
