@@ -6,7 +6,6 @@
     <title>Sennel Gardens — Grow What You Can, Where You Can</title>
     <meta name="description" content="Sennel Gardens transforms vacant lots in Washington, DC into thriving urban farms. 501(c)(3) nonprofit — enrichment, nutrition, economic growth.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preload" as="image" href="images/2025-summer-peak-production.jpg">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -120,27 +119,14 @@
             overflow: hidden;
         }
 
-        .hero-bg {
-            position: absolute;
-            inset: 0;
-        }
-
-        .hero-bg img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            filter: saturate(1.15);
-        }
-
         .hero-overlay {
             position: absolute;
             inset: 0;
             background: linear-gradient(
                 to bottom,
-                rgba(27,58,26,0.55) 0%,
-                rgba(27,58,26,0.4) 40%,
-                rgba(27,58,26,0.75) 70%,
-                rgba(27,58,26,0.95) 100%
+                #1b3a1a 0%,
+                #244e23 40%,
+                #1b3a1a 100%
             );
         }
 
@@ -967,9 +953,6 @@
 
 <!-- HERO -->
 <section class="hero" id="home">
-    <div class="hero-bg">
-        <img src="images/2025-summer-peak-production.jpg" alt="Sennel Gardens in full summer production — rows of vegetables with row covers and sunflowers">
-    </div>
     <div class="hero-overlay"></div>
     <div class="hero-content">
         <span class="hero-badge">501(c)(3) Nonprofit &bull; Washington, DC</span>
@@ -1009,7 +992,7 @@
         </p>
     </div>
     <div class="mission-image">
-        <img src="images/2025-summer-harvest-day.jpg" alt="Volunteers harvesting produce at Sennel Gardens with crates of fresh greens" loading="lazy">
+        <img src="images/2025-summer-peak-production.jpg" alt="Sennel Gardens in peak summer production with rows of vegetables and sunflowers" loading="lazy">
     </div>
 </section>
 
@@ -1164,6 +1147,24 @@
                 DC Urban Farmer
             </div>
         </div>
+    </div>
+</section>
+
+<!-- STORY VIDEO -->
+<section class="story-video centered" id="story" style="background: var(--cream); padding: 100px 80px;">
+    <span class="section-label">Watch Our Story</span>
+    <h2 class="section-title">Sennel Gardens, In Motion</h2>
+    <p class="section-desc" style="margin-bottom: 48px;">
+        A short film on the work: the lots, the growers, the food, the community.
+    </p>
+    <div style="max-width: 960px; margin: 0 auto; aspect-ratio: 16 / 9; border-radius: var(--radius); overflow: hidden; box-shadow: 0 20px 60px rgba(0,0,0,0.15);">
+        <iframe
+            src="https://www.youtube.com/embed/_UxrE02SNf8?si=ai7hXQGLpEnu6eoB"
+            title="Sennel Gardens"
+            style="width: 100%; height: 100%; border: 0;"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allowfullscreen></iframe>
     </div>
 </section>
 
@@ -1333,7 +1334,7 @@
             <div class="timeline-row">
                 <div class="timeline-item left">
                     <div class="tl-img">
-                        <img loading="lazy" src="images/2025-summer-harvest-day.jpg" alt="June 2025 — volunteers harvesting produce into crates">
+                        <img loading="lazy" src="images/2025-fall-brassicas-marigolds.jpg" alt="June 2025 — brassicas and marigold companions in the beds">
                     </div>
                     <div class="tl-caption">
                         <p class="tl-season">Summer &bull; June</p>
@@ -1379,7 +1380,7 @@
 <section style="background: var(--green-dark); padding: 60px 20px;">
     <div class="photo-wall">
         <div class="photo-wall-item featured">
-            <img loading="lazy" src="images/2025-summer-harvest-day.jpg" alt="Harvest day — volunteers working together in the garden">
+            <img loading="lazy" src="images/slide21_img12.jpg" alt="Fall garden with mulched beds and IBC water tanks">
         </div>
         <div class="photo-wall-item">
             <img loading="lazy" src="images/slide13_img5.jpg" alt="Working the rows at Sennel Gardens">
