@@ -122,13 +122,13 @@
         .hero-image-after {
             position: absolute;
             inset: 0;
-            background: url('images/2025-summer-peak-production.jpg') center/cover no-repeat;
+            background: url('images/2025-summer-peak-production.jpg') center 25%/cover no-repeat;
         }
 
         .hero-image-before {
             position: absolute;
             inset: 0;
-            background: url('images/2023-spring-empty-lot.jpg') center/cover no-repeat;
+            background: url('images/2023-spring-empty-lot.jpg') center 25%/cover no-repeat;
             transition: opacity 0.05s linear;
             will-change: opacity;
         }
@@ -1701,7 +1701,7 @@
         nb.classList.toggle('scrolled', y > 60);
         if (heroBefore) {
             const vh = window.innerHeight;
-            const progress = Math.max(0, Math.min(1, y / (vh * 0.7)));
+            const progress = Math.max(0, Math.min(1, y / (vh * 0.35)));
             heroBefore.style.opacity = 1 - progress;
             if (beforeTxt) beforeTxt.style.opacity = Math.max(0.35, 1 - progress);
             if (afterTxt) afterTxt.style.opacity = Math.max(0.35, progress);
