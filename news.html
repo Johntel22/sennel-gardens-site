@@ -274,6 +274,26 @@
             .footer-top { grid-template-columns: 1fr; gap: 32px; }
             .footer-bottom { flex-direction: column; gap: 16px; text-align: center; }
         }
+
+        /* ===== GALLERY TILES ===== */
+        .gal-tile {
+            aspect-ratio: 1 / 1;
+            overflow: hidden;
+            border-radius: 4px;
+            background: rgba(255,255,255,0.05);
+        }
+        .gal-tile img {
+            width: 100%; height: 100%; object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        .gal-tile:hover img { transform: scale(1.05); }
+
+        @media (max-width: 640px) {
+            .gal-tile[style*="span 2"] {
+                grid-column: span 1 !important;
+                grid-row: span 1 !important;
+            }
+        }
     </style>
 </head>
 <body>
@@ -298,6 +318,15 @@
     <p class="eyebrow">In the News</p>
     <h1>Press &amp; Recognition</h1>
     <p>State recognition, official announcements, and public presentations for the vacant-lot-to-farm work in Washington, DC and Maryland.</p>
+    <div style="display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; margin-top: 32px;">
+        <a href="/#involved" style="display: inline-flex; align-items: center; gap: 6px; background: #fff; color: var(--green-dark); padding: 14px 30px; border-radius: 4px; font-size: 14px; font-weight: 700; text-decoration: none;">How Can I Help? &rarr;</a>
+    </div>
+    <div style="display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; margin-top: 20px;">
+        <a href="https://www.idealist.org/en/volunteer-opportunity/c115d496de8b4656a07920eb09d9ccd8-garden-hand-sennel-gardens-washington" target="_blank" rel="noopener" style="padding: 8px 18px; border: 1px solid rgba(255,255,255,0.35); border-radius: 30px; font-size: 12px; font-weight: 600; color: #fff; text-decoration: none; background: rgba(255,255,255,0.05);">Volunteer</a>
+        <a href="mailto:johntel@goodgov.ai?subject=Join%20the%20Food%20Access%20Coalition" style="padding: 8px 18px; border: 1px solid rgba(255,255,255,0.35); border-radius: 30px; font-size: 12px; font-weight: 600; color: #fff; text-decoration: none; background: rgba(255,255,255,0.05);">Food Access Coalition</a>
+        <a href="mailto:sennelgardens@gmail.com?subject=Donation%20inquiry" style="padding: 8px 18px; border: 1px solid rgba(255,255,255,0.35); border-radius: 30px; font-size: 12px; font-weight: 600; color: #fff; text-decoration: none; background: rgba(255,255,255,0.05);">Donate</a>
+        <a href="mailto:sennelgardens@gmail.com?subject=Partnership%20or%20grant%20opportunity" style="padding: 8px 18px; border: 1px solid rgba(255,255,255,0.35); border-radius: 30px; font-size: 12px; font-weight: 600; color: #fff; text-decoration: none; background: rgba(255,255,255,0.05);">Partner</a>
+    </div>
 </section>
 
 <!-- FEATURED STORY -->
@@ -384,6 +413,60 @@
                 <span class="press-cta">Read &rarr;</span>
             </a>
 
+        </div>
+    </div>
+</section>
+
+<!-- RECENT VOLUNTEER DAY -->
+<section style="padding: 90px 40px; background: var(--cream);">
+    <div style="max-width: 720px; margin: 0 auto; text-align: center;">
+        <p class="section-eyebrow">On the Ground</p>
+        <h2 class="section-title" style="margin-bottom: 16px;">Recent Volunteer Day</h2>
+        <p style="font-size: 15px; line-height: 1.7; color: var(--text-light); margin: 0 auto 32px; max-width: 560px;">
+            The DC Iotas at the farm. Community groups continue to make Sennel Gardens what it is.
+        </p>
+        <blockquote class="instagram-media" data-instgrm-captioned data-instgrm-permalink="https://www.instagram.com/p/DYccUQwlqnH/?utm_source=ig_embed&amp;utm_campaign=loading" data-instgrm-version="14" style=" background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px auto; max-width:540px; min-width:326px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);"><div style="padding:16px;"> <a href="https://www.instagram.com/p/DYccUQwlqnH/?utm_source=ig_embed&amp;utm_campaign=loading" style=" background:#FFFFFF; line-height:0; padding:0 0; text-align:center; text-decoration:none; width:100%;" target="_blank" rel="noopener">View this post on Instagram</a></div></blockquote>
+        <script async src="https://www.instagram.com/embed.js"></script>
+    </div>
+</section>
+
+<!-- PHOTO GALLERY -->
+<section style="padding: 90px 40px; background: var(--green-dark); color: #fff;">
+    <div style="max-width: 1400px; margin: 0 auto;">
+        <p class="section-eyebrow" style="color: var(--green-accent); text-align: center;">The Farm in Frames</p>
+        <h2 class="section-title" style="color: #fff; text-align: center; margin-bottom: 12px;">Photo Gallery</h2>
+        <p style="font-size: 15px; line-height: 1.7; color: rgba(255,255,255,0.65); max-width: 620px; margin: 0 auto 48px; text-align: center;">
+            Three growing seasons of vacant-lot-to-farm transformation, harvest days, film crews on set, and the state recognition that came of it.
+        </p>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 12px;">
+            <div class="gal-tile" style="grid-column: span 2; grid-row: span 2;"><img src="images/2025-summer-peak-production.jpg" alt="Peak summer production at Sennel Gardens" loading="lazy"></div>
+            <div class="gal-tile"><img src="images/2023-spring-empty-lot.jpg" alt="Vacant lot before transformation, Spring 2023" loading="lazy"></div>
+            <div class="gal-tile"><img src="images/2023-spring-first-tilling.jpg" alt="First tilling of the vacant lot, Spring 2023" loading="lazy"></div>
+            <div class="gal-tile"><img src="images/2023-spring-staking-rows.jpg" alt="Staking rows, Spring 2023" loading="lazy"></div>
+            <div class="gal-tile"><img src="images/2023-summer-full-growth.jpg" alt="Full growth, Summer 2023" loading="lazy"></div>
+            <div class="gal-tile"><img src="images/2023-fall-harvest-beds.jpg" alt="Harvest beds, Fall 2023" loading="lazy"></div>
+            <div class="gal-tile"><img src="images/2023-fall-mulched-rows.jpg" alt="Mulched rows, Fall 2023" loading="lazy"></div>
+            <div class="gal-tile"><img src="images/2024-spring-infrastructure.jpg" alt="Building infrastructure, Spring 2024" loading="lazy"></div>
+            <div class="gal-tile"><img src="images/2024-summer-bed-prep.jpg" alt="Bed preparation, Summer 2024" loading="lazy"></div>
+            <div class="gal-tile"><img src="images/2024-winter-cleanup.jpg" alt="Winter cleanup, 2024" loading="lazy"></div>
+            <div class="gal-tile"><img src="images/2024-winter-overwintering.jpg" alt="Overwintering crops, 2024" loading="lazy"></div>
+            <div class="gal-tile" style="grid-column: span 2;"><img src="images/2025-spring-row-covers.jpg" alt="Row cover technology, Spring 2025" loading="lazy"></div>
+            <div class="gal-tile"><img src="images/2025-spring-greens-growing.jpg" alt="Greens growing under row covers" loading="lazy"></div>
+            <div class="gal-tile"><img src="images/2025-summer-harvest-day.jpg" alt="Harvest day, Summer 2025" loading="lazy"></div>
+            <div class="gal-tile"><img src="images/2025-fall-brassicas-marigolds.jpg" alt="Brassicas and marigolds, Fall 2025" loading="lazy"></div>
+            <div class="gal-tile"><img src="images/2025-fall-kale-closeup.jpg" alt="Kale close-up, Fall 2025" loading="lazy"></div>
+            <div class="gal-tile"><img src="images/harvest-trunk-full.jpg" alt="Car trunk full of harvested greens for distribution" loading="lazy"></div>
+            <div class="gal-tile"><img src="images/harvest-totes-lineup.jpg" alt="Six totes of harvested greens ready to distribute" loading="lazy"></div>
+            <div class="gal-tile"><img src="images/bts-manny-hoophouse.jpg" alt="Manny working in the hoop house while being filmed" loading="lazy"></div>
+            <div class="gal-tile"><img src="images/bts-manny-vacant-lot.jpg" alt="Manny walking a vacant lot with the film crew" loading="lazy"></div>
+            <div class="gal-tile"><img src="images/md-state-house-manny.jpg" alt="Manny at the Maryland State House on the state seal" loading="lazy"></div>
+            <div class="gal-tile"><img src="images/dhcd-great-places-win-plaque.jpg" alt="Receiving the NourishMD grant plaque from Maryland DHCD" loading="lazy"></div>
+            <div class="gal-tile"><img src="images/dhcd-great-places-win-team.jpg" alt="Team celebrating the NourishMD grant award" loading="lazy"></div>
+            <div class="gal-tile"><img src="images/slide13_img5.jpg" alt="Working the rows" loading="lazy"></div>
+            <div class="gal-tile"><img src="images/slide13_img6.jpg" alt="Lush garden with sunflowers" loading="lazy"></div>
+            <div class="gal-tile"><img src="images/slide6_img3.jpg" alt="Inside the hoop house" loading="lazy"></div>
+            <div class="gal-tile"><img src="images/slide21_img12.jpg" alt="Fall garden with IBC water tanks" loading="lazy"></div>
         </div>
     </div>
 </section>
