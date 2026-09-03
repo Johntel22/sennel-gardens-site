@@ -119,14 +119,20 @@
             overflow: hidden;
         }
 
+        .hero-image {
+            position: absolute;
+            inset: 0;
+            background: url('images/slide13_img6.jpg') center/cover no-repeat;
+        }
+
         .hero-overlay {
             position: absolute;
             inset: 0;
             background: linear-gradient(
                 to bottom,
-                #1b3a1a 0%,
-                #244e23 40%,
-                #1b3a1a 100%
+                rgba(27,58,26,0.55) 0%,
+                rgba(27,58,26,0.35) 45%,
+                rgba(27,58,26,0.9) 100%
             );
         }
 
@@ -980,6 +986,7 @@
 
 <!-- HERO -->
 <section class="hero" id="home">
+    <div class="hero-image"></div>
     <div class="hero-overlay"></div>
     <div class="hero-content">
         <span class="hero-badge">501(c)(3) Nonprofit &bull; Washington, DC</span>
