@@ -743,7 +743,26 @@
             color: var(--green-accent);
         }
 
-        .involve-card p { font-size: 14px; line-height: 1.6; color: rgba(255,255,255,0.55); }
+        .involve-card p { font-size: 14px; line-height: 1.6; color: rgba(255,255,255,0.55); margin-bottom: 16px; }
+
+        .involve-card a.card-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            color: var(--green-accent);
+            text-decoration: none;
+            border-bottom: 1px solid rgba(120,187,110,0.4);
+            padding-bottom: 2px;
+            transition: color 0.2s, border-color 0.2s;
+        }
+
+        .involve-card a.card-cta:hover {
+            color: #fff;
+            border-color: #fff;
+        }
 
         /* ===== RESOURCES ===== */
         .resources { background: var(--cream); }
@@ -1414,15 +1433,18 @@
     <div class="involve-grid">
         <div class="involve-card">
             <h3>Volunteer</h3>
-            <p>Join us at one of our garden sites. No experience needed — just a willingness to get your hands in the soil and learn.</p>
+            <p>Join us at one of our garden sites. No experience needed, just a willingness to get your hands in the soil and learn.</p>
+            <a class="card-cta" href="https://www.idealist.org/en/volunteer-opportunity/c115d496de8b4656a07920eb09d9ccd8-garden-hand-sennel-gardens-washington" target="_blank" rel="noopener">Sign up on Idealist &rarr;</a>
         </div>
         <div class="involve-card">
             <h3>Donate</h3>
             <p>As a 501(c)(3), your tax-deductible contribution goes directly to tools, seeds, soil, and site development.</p>
+            <a class="card-cta" href="mailto:sennelgardens@gmail.com?subject=Donation%20inquiry">Email to give &rarr;</a>
         </div>
         <div class="involve-card">
-            <h3>Partner</h3>
-            <p>We work with land grant universities, USDA programs, local orgs, and community groups to expand our impact.</p>
+            <h3>Partner &amp; Grants</h3>
+            <p>We work with land grant universities, USDA programs, foundations, and community groups. Reach out about partnerships or grant opportunities.</p>
+            <a class="card-cta" href="mailto:sennelgardens@gmail.com?subject=Partnership%20or%20grant%20opportunity">Email us &rarr;</a>
         </div>
     </div>
     <a href="mailto:sennelgardens@gmail.com" class="btn btn-primary" style="font-size: 16px; padding: 16px 40px;">Contact Us &rarr;</a>
