@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food Access Coalition &amp; Farmers Council — Sennel Gardens</title>
+    <meta name="description" content="A growing group of small farms in Prince George's County, Maryland working together on grants, land access, education and fresh food for the neighbors who need it. Convened by Sennel Gardens with Good Governance Consulting.">
+    <link rel="canonical" href="https://sennelgardens.com/council/">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --green-dark: #1b3a1a;
+            --green-mid: #2d6a2e;
+            --green-accent: #78bb6e;
+            --cream: #faf8f5;
+            --charcoal: #1a1a1a;
+            --text: #2c2c2c;
+            --text-light: #666;
+            --line: rgba(27,58,26,0.14);
+            --radius: 12px;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Inter', -apple-system, sans-serif; color: var(--text); background: var(--cream); overflow-x: hidden; }
+        img { display: block; max-width: 100%; }
+        a { color: var(--green-mid); }
+
+        /* ===== NAV (matches site) ===== */
+        nav {
+            position: fixed; top: 0; width: 100%; z-index: 100;
+            padding: 20px 40px;
+            display: flex; justify-content: space-between; align-items: center;
+            background: rgba(27,58,26,0.95);
+            backdrop-filter: blur(12px);
+        }
+        .nav-brand { font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 900; color: #fff; text-decoration: none; }
+        .nav-brand span { color: var(--green-accent); }
+        .nav-links { display: flex; gap: 28px; list-style: none; align-items: center; }
+        .nav-links a { color: rgba(255,255,255,0.8); text-decoration: none; font-size: 13px; font-weight: 500; letter-spacing: 1px; text-transform: uppercase; transition: color 0.3s; }
+        .nav-links a:hover, .nav-links a.active { color: var(--green-accent); }
+        .nav-cta { background: #fff !important; color: var(--green-dark) !important; padding: 8px 20px !important; border-radius: 4px; font-weight: 600 !important; }
+        .mobile-toggle { display: none; background: none; border: none; cursor: pointer; padding: 8px; z-index: 102; }
+        .mobile-toggle span { display: block; width: 26px; height: 2px; background: #fff; margin: 5px 0; }
+
+        /* ===== HERO ===== */
+        .hero {
+            position: relative; min-height: 78vh;
+            display: flex; align-items: flex-end;
+            background: url('/images/2025-summer-harvest-day.jpg') center 40%/cover no-repeat;
+            color: #fff;
+        }
+        .hero::before { content: ""; position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(27,58,26,0.35) 0%, rgba(27,58,26,0.88) 100%); }
+        .hero-inner { position: relative; max-width: 1080px; margin: 0 auto; padding: 160px 40px 72px; width: 100%; }
+        .eyebrow { font-size: 12px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--green-accent); margin-bottom: 16px; }
+        .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(36px, 5.5vw, 64px); font-weight: 900; line-height: 1.08; max-width: 820px; margin-bottom: 20px; }
+        .hero p { font-size: 18px; line-height: 1.6; max-width: 640px; color: rgba(255,255,255,0.9); }
+        .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 32px; }
+        .btn { display: inline-flex; align-items: center; gap: 6px; padding: 14px 28px; border-radius: 4px; font-size: 14px; font-weight: 700; text-decoration: none; transition: transform 0.2s; }
+        .btn:hover { transform: translateY(-2px); }
+        .btn-light { background: #fff; color: var(--green-dark); }
+        .btn-ghost { border: 1px solid rgba(255,255,255,0.5); color: #fff; }
+        .btn-green { background: var(--green-dark); color: #fff; }
+
+        /* ===== SECTIONS ===== */
+        section.block { padding: 88px 40px; }
+        .wrap { max-width: 1080px; margin: 0 auto; }
+        .narrow { max-width: 760px; }
+        .section-eyebrow { font-size: 12px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--green-mid); margin-bottom: 14px; }
+        .section-title { font-family: 'Playfair Display', serif; font-size: clamp(30px, 4vw, 44px); font-weight: 700; color: var(--green-dark); line-height: 1.15; margin-bottom: 22px; }
+        .lede { font-size: 19px; line-height: 1.7; color: var(--text); }
+        .lede + .lede { margin-top: 18px; }
+
+        .pillars { display: grid; grid-template-columns: repeat(2, 1fr); gap: 28px; margin-top: 44px; }
+        .pillar { border-top: 3px solid var(--green-dark); padding-top: 22px; }
+        .pillar h3 { font-family: 'Playfair Display', serif; font-size: 24px; color: var(--green-dark); margin-bottom: 10px; }
+        .pillar p { line-height: 1.65; color: var(--text); }
+
+        .dark { background: var(--green-dark); color: #fff; }
+        .dark .section-eyebrow { color: var(--green-accent); }
+        .dark .section-title { color: #fff; }
+        .dark .lede { color: rgba(255,255,255,0.88); }
+        .how { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; margin-top: 44px; }
+        .how div { border-left: 1px solid rgba(255,255,255,0.25); padding-left: 20px; }
+        .how strong { display: block; font-size: 17px; margin-bottom: 8px; }
+        .how p { line-height: 1.6; color: rgba(255,255,255,0.85); font-size: 15px; }
+
+        .now { list-style: none; margin-top: 32px; border-top: 1px solid var(--line); }
+        .now li { display: grid; grid-template-columns: 180px 1fr; gap: 24px; padding: 22px 0; border-bottom: 1px solid var(--line); line-height: 1.6; }
+        .now li span { font-weight: 600; color: var(--green-dark); }
+
+        /* ===== FORM ===== */
+        .signup { background: #fff; border: 1px solid var(--line); border-radius: var(--radius); padding: 40px; margin-top: 36px; }
+        .fields { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+        .field { display: flex; flex-direction: column; gap: 6px; }
+        .field.full { grid-column: 1 / -1; }
+        label { font-size: 13px; font-weight: 600; color: var(--green-dark); }
+        input, select { font: inherit; font-size: 16px; padding: 12px 14px; border: 1px solid #c9c4bb; border-radius: 6px; background: #fff; color: var(--text); width: 100%; }
+        input:focus, select:focus { outline: 2px solid var(--green-mid); outline-offset: 1px; border-color: var(--green-mid); }
+        .form-foot { display: flex; align-items: center; gap: 18px; flex-wrap: wrap; margin-top: 22px; }
+        .form-foot small { color: var(--text-light); font-size: 13px; }
+        .hp { position: absolute; left: -9999px; }
+        #formMsg { margin-top: 16px; font-weight: 600; min-height: 24px; }
+        #formMsg.ok { color: var(--green-mid); }
+        #formMsg.err { color: #9b2c2c; }
+
+        /* ===== FOOTER ===== */
+        footer { background: var(--charcoal); color: rgba(255,255,255,0.7); padding: 56px 40px 28px; }
+        .footer-top { max-width: 1080px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px; }
+        .footer-brand { font-family: 'Playfair Display', serif; font-size: 24px; font-weight: 900; color: #fff; margin-bottom: 12px; }
+        .footer-brand span { color: var(--green-accent); }
+        footer p, footer a { font-size: 14px; line-height: 1.7; color: rgba(255,255,255,0.7); text-decoration: none; display: block; }
+        footer a:hover { color: #fff; }
+        .footer-col h4 { color: #fff; font-size: 12px; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 12px; }
+        .footer-bottom { max-width: 1080px; margin: 40px auto 0; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.12); font-size: 13px; }
+
+        @media (max-width: 860px) {
+            nav { padding: 16px 20px; }
+            .mobile-toggle { display: block; }
+            .nav-links { position: fixed; inset: 0; background: var(--green-dark); flex-direction: column; justify-content: center; gap: 28px; display: none; }
+            .nav-links.open { display: flex; }
+            .nav-links a { font-size: 16px; }
+            .hero-inner { padding: 130px 20px 56px; }
+            section.block { padding: 64px 20px; }
+            .pillars, .how, .fields { grid-template-columns: 1fr; }
+            .now li { grid-template-columns: 1fr; gap: 6px; }
+            .footer-top { grid-template-columns: 1fr; }
+            footer { padding: 48px 20px 24px; }
+        }
+    </style>
+</head>
+<body>
+
+<nav id="navbar">
+    <a href="/" class="nav-brand"><span>Sennel</span> Gardens</a>
+    <ul class="nav-links" id="navLinks">
+        <li><a href="/#mission" onclick="closeNav()">Mission</a></li>
+        <li><a href="/#pillars" onclick="closeNav()">Impact</a></li>
+        <li><a href="/#sites" onclick="closeNav()">Sites</a></li>
+        <li><a href="/#founder" onclick="closeNav()">Founder</a></li>
+        <li><a href="/news.html">News</a></li>
+        <li><a href="/council/" class="active">Council</a></li>
+        <li><a href="#join" onclick="closeNav()" class="nav-cta">Join the List</a></li>
+    </ul>
+    <button class="mobile-toggle" onclick="toggleNav()" aria-label="Menu"><span></span><span></span><span></span></button>
+</nav>
+
+<header class="hero">
+    <div class="hero-inner">
+        <p class="eyebrow">Prince George's County, Maryland</p>
+        <h1>Food Access Coalition &amp; Farmers Council</h1>
+        <p>A growing group of small farms working together on grants, land, education, and getting fresh food to the neighbors who need it most. Convened by Sennel Gardens with Good Governance Consulting.</p>
+        <div class="hero-actions">
+            <a href="#join" class="btn btn-light">Join the newsletter &rarr;</a>
+            <a href="mailto:sennelgardens@gmail.com?subject=Food%20Access%20Council" class="btn btn-ghost">Email the Council</a>
+        </div>
+    </div>
+</header>
+
+<section class="block">
+    <div class="wrap narrow">
+        <p class="section-eyebrow">Why we exist</p>
+        <h2 class="section-title">Small farms do better when they stop applying alone.</h2>
+        <p class="lede">Every farm in this group was writing grant applications, chasing cold storage, and looking for land on its own. The Council puts that work in one place. We share resources, find each farm's niche, set priorities together, and let partners and funders understand what we do without having to ask.</p>
+        <p class="lede">We stay rooted and true to the earth. The grant work is what brought us together, and it stays at the center.</p>
+    </div>
+</section>
+
+<section class="block" style="padding-top:0">
+    <div class="wrap">
+        <p class="section-eyebrow">What we work on</p>
+        <h2 class="section-title">Four things, done together.</h2>
+        <div class="pillars">
+            <div class="pillar">
+                <h3>Education</h3>
+                <p>Beginner farmer training, community and school farm tours, 4-H and youth partnerships, beekeeping classes, crop planning, and mental health for the people who grow our food.</p>
+            </div>
+            <div class="pillar">
+                <h3>Advocacy</h3>
+                <p>Land access for small growers, keeping farm-zoned land in farming, the Prince George's Food Task Force recommendations, and getting fresh produce into school cafeterias.</p>
+            </div>
+            <div class="pillar">
+                <h3>Funding</h3>
+                <p>One shared grant calendar. Applications written once and reused. Letters of support from member farms. Clean paper trails for every farm.</p>
+            </div>
+            <div class="pillar">
+                <h3>Food Access</h3>
+                <p>Working families need one place to buy fresh food. Farm stands, delivery, and food hubs in the neighborhoods that do not have them.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="block dark">
+    <div class="wrap">
+        <p class="section-eyebrow">How it works</p>
+        <h2 class="section-title">Light on your time. Heavy on follow-through.</h2>
+        <div class="how">
+            <div>
+                <strong>No dues in year one</strong>
+                <p>Membership is free for the first year. Farms stay independent and keep their own customers, land, and books.</p>
+            </div>
+            <div>
+                <strong>Short, regular meetings</strong>
+                <p>More often while we get started, then quarterly. One hour. In person on a member farm when the season allows.</p>
+            </div>
+            <div>
+                <strong>Good Gov carries the admin</strong>
+                <p>Good Governance Consulting handles applications, agendas, notes, and follow-up. Members bring ideas, feedback, and opportunities.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="block">
+    <div class="wrap narrow">
+        <p class="section-eyebrow">Right now</p>
+        <h2 class="section-title">What is on the table this fall.</h2>
+        <ul class="now">
+            <li><span>NourishMD Round 2</span><div>Maryland DHCD grants of $25,000 to $150,000 for farm stands and on-farm markets in communities with limited fresh food access. Applications due November 2, 2026.</div></li>
+            <li><span>Cold storage</span><div>Chillers and coolers are the single biggest need across member farms. We are tracking state and federal infrastructure grants that pay for them.</div></li>
+            <li><span>Farm tours and education</span><div>Opening member land to Prince George's Community College and county schools for hands-on agricultural education.</div></li>
+            <li><span>November meeting</span><div>Our first in-person gathering on a member farm, ahead of the state's NourishMD site visit on November 17.</div></li>
+        </ul>
+    </div>
+</section>
+
+<section class="block" id="join" style="padding-top:0">
+    <div class="wrap narrow">
+        <p class="section-eyebrow">Newsletter</p>
+        <h2 class="section-title">Follow the Council.</h2>
+        <p class="lede">Grant deadlines, farm tours, meeting dates, and what the farms are growing. A few emails a season, never more.</p>
+
+        <form class="signup" name="council-newsletter" method="POST" action="/council/" data-netlify="true" netlify-honeypot="website" id="councilForm">
+            <input type="hidden" name="form-name" value="council-newsletter">
+            <p class="hp"><label>Leave this empty <input name="website" tabindex="-1" autocomplete="off"></label></p>
+            <div class="fields">
+                <div class="field">
+                    <label for="name">Name</label>
+                    <input id="name" name="name" type="text" autocomplete="name" required>
+                </div>
+                <div class="field">
+                    <label for="email">Email</label>
+                    <input id="email" name="email" type="email" autocomplete="email" required>
+                </div>
+                <div class="field">
+                    <label for="org">Farm or organization (optional)</label>
+                    <input id="org" name="org" type="text" autocomplete="organization">
+                </div>
+                <div class="field">
+                    <label for="role">I am a</label>
+                    <select id="role" name="role">
+                        <option>Farmer or grower</option>
+                        <option>Neighbor</option>
+                        <option>Partner organization</option>
+                        <option>Funder</option>
+                        <option>Press</option>
+                        <option>Elected official or staff</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-foot">
+                <button type="submit" class="btn btn-green" id="submitBtn">Join the list &rarr;</button>
+                <small>We do not share your information. Unsubscribe any time by replying to any email.</small>
+            </div>
+            <div id="formMsg" role="status" aria-live="polite"></div>
+        </form>
+    </div>
+</section>
+
+<footer>
+    <div class="footer-top">
+        <div>
+            <div class="footer-brand"><span>Sennel</span> Gardens</div>
+            <p>The Food Access Coalition &amp; Farmers Council is convened by Sennel Gardens, a 501(c)(3) nonprofit, with <a href="https://www.goodgov.ai" target="_blank" rel="noopener" style="display:inline">Good Governance Consulting</a>.</p>
+        </div>
+        <div class="footer-col">
+            <h4>Council</h4>
+            <a href="#join">Newsletter</a>
+            <a href="mailto:sennelgardens@gmail.com?subject=Food%20Access%20Council">Email the Council</a>
+            <a href="/">Sennel Gardens home</a>
+        </div>
+        <div class="footer-col">
+            <h4>Contact</h4>
+            <a href="mailto:sennelgardens@gmail.com">sennelgardens@gmail.com</a>
+            <a href="tel:2028549244">(202) 854-9244</a>
+            <p>PO Box 36451<br>Washington, DC 20020</p>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>&copy; 2026 Sennel Gardens. EIN 38-4330572. 501(c)(3) tax-exempt.</p>
+    </div>
+</footer>
+
+<script>
+    function toggleNav() { document.getElementById('navLinks').classList.toggle('open'); }
+    function closeNav() { document.getElementById('navLinks').classList.remove('open'); }
+
+    const form = document.getElementById('councilForm');
+    const msg = document.getElementById('formMsg');
+    const btn = document.getElementById('submitBtn');
+    form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        msg.className = ''; msg.textContent = '';
+        btn.disabled = true;
+        try {
+            const res = await fetch('/council/', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                body: new URLSearchParams(new FormData(form)).toString()
+            });
+            if (!res.ok) throw new Error(res.status);
+            form.reset();
+            msg.className = 'ok';
+            msg.textContent = 'You are on the list. Thank you!';
+        } catch (err) {
+            msg.className = 'err';
+            msg.textContent = 'That did not go through. Email sennelgardens@gmail.com and we will add you by hand.';
+        } finally {
+            btn.disabled = false;
+        }
+    });
+</script>
+</body>
+</html>
